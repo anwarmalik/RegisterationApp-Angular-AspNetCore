@@ -28,7 +28,7 @@
                 Account Number is required.
             </div>
             <div *ngIf="accountNumber.errors?.pattern && accountNumber.touched" class="text-danger">
-                6 didgit BSB is required.
+                Account Number should be of 8 didgits.
             </div>
         </div>
         <div class="form-group">
@@ -56,6 +56,9 @@
             </label>
             <div *ngIf="amount.errors?.required && amount.touched" class="text-danger">
                 Amount is required.
+            </div>
+            <div *ngIf="amount.errors?.pattern && amount.touched" class="text-danger">
+                Enter Amount is invalid!
             </div>
         </div>
 

@@ -15,6 +15,7 @@ export class RegisterComponent {
     isValidFormSubmitted: boolean;
     bsbPattern = "^[0-9]{6}$";
     accountNumberPattern = "^[0-9]{8}$";
+    moneyPattern = "^[-]?[0-9]*[.]?[0-9]{0,2}$";
 
 
     registerForm = this.fb.group({
@@ -22,7 +23,7 @@ export class RegisterComponent {
         accountNumber: ['', [Validators.required, Validators.pattern(this.accountNumberPattern)]],
         accountName: ['', Validators.required],
         reference: ['', Validators.required],
-        amount: ['', Validators.required]
+        amount: ['', [Validators.required, Validators.pattern(this.moneyPattern)]]
     });
 
     constructor(private fb: FormBuilder, private registerService: RegisterService) { }
