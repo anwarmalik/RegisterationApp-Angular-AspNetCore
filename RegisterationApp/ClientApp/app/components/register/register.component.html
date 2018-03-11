@@ -1,0 +1,65 @@
+﻿<div>
+    <h1>Register Component</h1>
+    <p *ngIf="isValidFormSubmitted && registerForm.pristine" class="alert alert-success">
+        Form submitted successfully.
+    </p>
+    <p *ngIf="errorOnSubmit && registerForm.pristine" class="alert alert-danger">
+        An error has occured to save the data.
+    </p>
+    <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" name="registerForm">
+        <div class="form-group">
+            <label class="center-block">
+                BSB:
+                <input class="form-control" formControlName="bsb" />
+            </label>
+            <div *ngIf="bsb.errors?.required && bsb.touched" class="text-danger">
+                BSB is required.
+            </div>
+            <div *ngIf="bsb.errors?.pattern && bsb.touched" class="text-danger">
+                6 didgit BSB is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Account Number:
+                <input class="form-control" formControlName="accountNumber" />
+            </label>
+            <div *ngIf="accountNumber.errors?.required && accountNumber.touched" class="text-danger">
+                Account Number is required.
+            </div>
+            <div *ngIf="accountNumber.errors?.pattern && accountNumber.touched" class="text-danger">
+                6 didgit BSB is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Account Name:
+                <input class="form-control" [formControl]="accountName" name="accountName" />
+            </label>
+            <div *ngIf="accountName.errors?.required && accountName.touched"  class="text-danger">
+                Account Name is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Reference:
+                <input class="form-control" [formControl]="reference" />
+            </label>
+            <div *ngIf="reference.errors?.required && reference.touched" class="text-danger">
+                Reference is required.
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Amount:
+                <input class="form-control" [formControl]="amount" />
+            </label>
+            <div *ngIf="amount.errors?.required && amount.touched" class="text-danger">
+                Amount is required.
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!registerForm.valid || saving" class="btn btn-success">Submit</button>
+    </form>
+
+</div>
