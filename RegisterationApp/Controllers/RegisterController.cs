@@ -20,7 +20,7 @@ namespace RegisterationApp.Controllers
             this.service = service;
         }
 
-        public IActionResult Post(RegisterationInfo registerationInfo)
+        public IActionResult Post([FromBody]RegisterationInfo registerationInfo)
         {
             if (!ModelState.IsValid)
             {
