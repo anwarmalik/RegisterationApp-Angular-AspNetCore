@@ -11,6 +11,8 @@ Clone the source code and run the app in visual studio.
 if you are using dotnet command linme
 
 ```
+cd RegisterationApp
+
 dotnet restore
 
 dotnet build
